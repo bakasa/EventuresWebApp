@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Eventures";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg Eventures-bg-color">
+                <b><a class="navbar-brand nav-link-dark" href="/">@ViewData["Title"]</a></b>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <b><a class="nav-link nav-link-dark" href="/">Home</a></b>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Events</b>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <b><a class="dropdown-item" asp-controller="Events" asp-action="All">All Events</a></b>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                        <b><a class="dropdown-item" asp-controller="Events" asp-action="Create">Create Event</a></b>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <b><a asp-controller="Account" asp-action="Register" class="nav-link nav-link-dark">Register</a></b>
+                            </li>
+                            <li class="nav-item">
+                                <b><a asp-controller="Account" asp-action="Login" class="nav-link nav-link-dark">Login</a></b>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <b><a class="nav-link nav-link-dark">Hello @this.User.Identity.Name!</a></b>
+                            </li>
+                            <li class="nav-item">
+                                <b><a asp-controller="Account" asp-action="Logout" class="nav-link nav-link-dark">Logout</a></b>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        @RenderBody()
+        <footer>
+            <div class="container-fluid Eventures-bg-color">
+                <div class="p-2 text-center">
+                    &copy; CopyRight Eventures Inc. 2018-2018. All rights reserved.
+                </div>
+            </div>
+        </footer>
+        @RenderSection("Scripts", required: false)
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    </div>
+</body>
+</html>

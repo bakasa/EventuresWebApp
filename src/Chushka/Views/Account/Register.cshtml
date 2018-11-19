@@ -1,0 +1,53 @@
+﻿@model Eventures.Web.ViewModels.RegisterInputModel
+<main class="mt-3">
+    <h1 class="text-center">Register</h1>
+    <hr class="half-width hr-2" style="background-color: #AFEEEE" />
+    <form class="mx-auto half-width" method="post" asp-controller="Account" asp-action="Register">
+        <div class="row d-flex justify-content-between">
+            <div class="form-group col-md-6">
+                <b><label asp-for="Username" class="text-center col-md-12"></label></b>
+                <input asp-for="Username" class="form-control" placeholder="Username...">
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <b><label asp-for="Email" class="text-center col-md-12"></label></b>
+                <input asp-for="Email" class="form-control" placeholder="Email...">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+            <div class="form-group col-md-6">
+                <b><label asp-for="Password" class="text-center col-md-12"></label></b>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password...">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <b><label asp-for="ConfirmPassword" class="text-center col-md-12"></label></b>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password...">
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+        <hr class="hr-2" style="background-color: #AFEEEE" />
+        <div class="row d-flex justify-content-between">
+            <div class="form-group col-md-6">
+                <b><label asp-for="FirstName" class="text-center col-md-12"></label></b>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name...">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <b><label asp-for="LastName" class="text-center col-md-12"></label></b>
+                <input asp-for="LastName" class="form-control" placeholder="Last Name...">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <b><label asp-for="UCN" class="text-center col-md-12"></label></b>
+            <input asp-for="UCN" class="form-control" placeholder="Universal Citizen Number...">
+            <span asp-validation-for="UCN" class="text-danger"></span>
+        </div>
+        <hr class="hr-2" style="background-color: #AFEEEE" />
+        <div class="button-holder d-flex justify-content-center">
+            <button type="submit" class="btn Eventures-bg-color">Register</button>
+        </div>
+    </form>
+</main>
